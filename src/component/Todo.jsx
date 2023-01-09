@@ -34,6 +34,10 @@ export default class Todo extends Component {
 
   onSubmitHandler = (e) => {
     e.preventDefault();
+    if (!this.state.term)
+    {
+      return;
+    }
     this.setState({
       term: "",
       items: [...this.state.items, this.state.term],
