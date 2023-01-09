@@ -1,0 +1,30 @@
+* {
+  padding: 0px;
+  margin: 0px;
+}
+
+.key {
+  padding: 50px;
+  background-color: rgb(255, 189, 65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  .box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .title {
+      width: 70px;
+      background-color: rgb(113, 113, 255);
+      padding: 10px;
+      text-align: center;
+      border-radius: 10px;
+      font-family: "Segoe UI";
+    }
+    .active {
+      background-color: black;
+    }
+  }
+}
