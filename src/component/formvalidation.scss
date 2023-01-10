@@ -1,0 +1,45 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+.formcontainer{
+    margin: 40px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    width: 350px;
+    height:400px;
+    display: flex;
+    flex-direction: column;
+    .cadentials{
+        margin-top: 30px;
+        display: flex;
+        flex-direction: column;
+        label{
+            align-items: flex-start;
+        }
+        input{
+            padding: 5px;
+            width: 340px;
+            outline: none;
+            height: 30px;
+            border: none;
+            background-color: rgb(235, 235, 235);
+            border-radius: 7px;
+        }
+    }
+    button{
+        padding: 10px;
+        margin-top: 40px;
+        background-color: blue;
+        color: white;
+        border: none;
+        border-radius: 7px;
+        font-size: 1rem;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+}
+#error{
+    color: red;
+}

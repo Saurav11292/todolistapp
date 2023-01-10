@@ -1,43 +1,92 @@
 import React, { Component } from "react";
+import "./formvalidation.scss";
 
-export class Formvalidation extends Component {
+export default class Formvalidation extends Component {
   constructor() {
     super();
     this.state = {
-      email: {
-        name: "email",
-        value: "",
-        error: "",
-      },
-      password: { name: "Password", value: "", error: "" },
-      confirmPassword: { name: "Confirm-password", value: "", error: "" },
+      email: "",
+      password: "",
+      confirmPassword: "",
+      errorEmail: "",
+      errorPassword: "",
+      errorConfirmPassword: "",
     };
   }
 
-    render() {
-        const { email, password, confirmPassword } = this.state;
+  onChangeHandler = (e) => {
+    this.setState({ [e.target.name]: e.target.value }, () => {
+      if (this.state.email.includes("@")) {
+        this.setState({
+          errorEmail: "",
+        });
+      } else {
+        this.setState({
+          errorEmail: "invalid email id",
+        });
+      }
+    });
+  };
+
+  onSubmitHandler = (e) => {
+    e.preventDefault();
+    const { password, confirmPassword } = this.state;
+    if (password !== confirmPassword) {
+      this.setState({
+        errorPassword: "password does not match",
+      });
+    } else {
+      this.setState({
+        errorPassword: "",
+      });
+    }
+  };
+
+  render() {
     return (
       <div>
         <form className="formcontainer">
-          <div className="email">
-            <label>E-mail</label>
-            <input type="text" name={email.name} />
+          <div className="cadentials">
+            <label>Email</label>
+            <input
+              type="email"
+              name="email"
+              value={this.state.email}
+              onChange={this.onChangeHandler}
+            />
           </div>
-          <div className="password">
-            <label>Passsword</label>
-            <input type="text" name={password.name} />
+          <div>
+            <p id="error">{this.state.errorEmail}</p>
           </div>
-          <div className="confirmpasssword">
-            <label>Confirm Passsword</label>
-            <input type="text" name={confirmPassword.name} />
-                </div>
-                <div>
-                    <button type="submit">Sign up</button>
-                </div>
+          <div className="cadentials">
+            <label>Password</label>
+            <input
+              type="password"
+              name="password"
+              value={this.state.password}
+              onChange={this.onChangeHandler}
+            />
+          </div>
+          <div>
+            <p id="error">{this.state.errorPassword}</p>
+          </div>
+          <div className="cadentials">
+            <label>Confirm Pasword</label>
+            <input
+              type="Password"
+              name="confirmPassword"
+              value={this.state.confirmPassword}
+              onChange={this.onChangeHandler}
+            />
+          </div>
+          <div>
+            <p id="error">{this.state.errorConfirmPassword}</p>
+          </div>
+          <button type="submit" onClick={this.onSubmitHandler}>
+            Sign up
+          </button>
         </form>
       </div>
     );
   }
 }
-
-export default Formvalidation;
